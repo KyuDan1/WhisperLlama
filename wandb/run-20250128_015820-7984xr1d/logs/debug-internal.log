@@ -1,0 +1,18 @@
+{"time":"2025-01-28T01:58:20.773477666+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250128_015820-7984xr1d/logs/debug-core.log"}
+{"time":"2025-01-28T01:58:20.898920027+09:00","level":"INFO","msg":"created new stream","id":"7984xr1d"}
+{"time":"2025-01-28T01:58:20.898948127+09:00","level":"INFO","msg":"stream: started","id":"7984xr1d"}
+{"time":"2025-01-28T01:58:20.898974245+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"7984xr1d"}
+{"time":"2025-01-28T01:58:20.898998667+09:00","level":"INFO","msg":"sender: started","stream_id":"7984xr1d"}
+{"time":"2025-01-28T01:58:20.899024558+09:00","level":"INFO","msg":"handler: started","stream_id":"7984xr1d"}
+{"time":"2025-01-28T01:58:21.165656996+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-28T01:59:25.921396335+09:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-01-28T01:59:40.696755021+09:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-01-28T01:59:40.700345017+09:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-01-28T01:59:40.825962374+09:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-01-28T01:59:40.830823286+09:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-01-28T01:59:40.988985513+09:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-01-28T01:59:40.992155452+09:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-01-28T01:59:41.022214202+09:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-01-28T01:59:41.023674253+09:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-01-28T01:59:43.454344284+09:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-01-28T01:59:44.840075344+09:00","level":"INFO","msg":"Pausing system monitor"}

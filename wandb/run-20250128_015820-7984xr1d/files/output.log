@@ -1,0 +1,5 @@
+/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/load.py:1461: FutureWarning: The repository for librispeech_asr contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/librispeech_asr
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+Downloading data:   2%|▏         | 548M/23.0G [00:53<36:18, 10.3MB/s]     

@@ -1,0 +1,8 @@
+{"time":"2025-01-28T02:15:15.382363068+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250128_021514-dvq33z2e/logs/debug-core.log"}
+{"time":"2025-01-28T02:15:15.506908428+09:00","level":"INFO","msg":"created new stream","id":"dvq33z2e"}
+{"time":"2025-01-28T02:15:15.506934864+09:00","level":"INFO","msg":"stream: started","id":"dvq33z2e"}
+{"time":"2025-01-28T02:15:15.507101863+09:00","level":"INFO","msg":"handler: started","stream_id":"dvq33z2e"}
+{"time":"2025-01-28T02:15:15.507197674+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"dvq33z2e"}
+{"time":"2025-01-28T02:15:15.507422806+09:00","level":"INFO","msg":"sender: started","stream_id":"dvq33z2e"}
+{"time":"2025-01-28T02:15:16.023759494+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-28T03:33:01.859920478+09:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/wjdrbeks1021-chung-ang-university/whisper-llama-asr/dvq33z2e/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}

@@ -1,0 +1,65 @@
+/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/load.py:1461: FutureWarning: The repository for librispeech_asr contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/librispeech_asr
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+Downloading data:  11%|█████████████████▌                                                                                                                                                 | 2.49G/23.0G [03:51<31:54, 10.7MB/s]
+Traceback (most recent call last):
+  File "/home/kyudan/WhisperLlama/train.py", line 246, in <module>
+    main()
+  File "/home/kyudan/WhisperLlama/train.py", line 189, in main
+    train_dataset = LibriSpeechDataset(split="train.clean.10", processor=processor)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 26, in __init__
+    self.dataset = load_dataset("librispeech_asr", split=split)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/load.py", line 2582, in load_dataset
+    builder_instance.download_and_prepare(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/builder.py", line 1005, in download_and_prepare
+    self._download_and_prepare(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/builder.py", line 1767, in _download_and_prepare
+    super()._download_and_prepare(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/builder.py", line 1078, in _download_and_prepare
+    split_generators = self._split_generators(dl_manager, **split_generators_kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/.cache/huggingface/modules/datasets_modules/datasets/librispeech_asr/2712a8f82f0d20807a56faadcd08734f9bdd24c850bb118ba21ff33ebff0432f/librispeech_asr.py", line 115, in _split_generators
+    archive_path = dl_manager.download(_DL_URLS[self.config.name])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/download/download_manager.py", line 434, in download
+    downloaded_path_or_paths = map_nested(
+                               ^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/utils/py_utils.py", line 476, in map_nested
+    _single_map_nested((function, obj, types, None, True, None))
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/utils/py_utils.py", line 368, in _single_map_nested
+    return function(data_struct)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/download/download_manager.py", line 459, in _download
+    out = cached_path(url_or_filename, download_config=download_config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/utils/file_utils.py", line 190, in cached_path
+    output_path = get_from_cache(
+                  ^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/utils/file_utils.py", line 634, in get_from_cache
+    http_get(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/utils/file_utils.py", line 409, in http_get
+    for chunk in response.iter_content(chunk_size=1024):
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/requests/models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/urllib3/response.py", line 934, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/urllib3/response.py", line 877, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/urllib3/response.py", line 812, in _raw_read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/urllib3/response.py", line 797, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/http/client.py", line 479, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
