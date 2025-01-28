@@ -1,6 +1,6 @@
 # WhisperLlama
 
-### Whisper Encodoer + Llama 4 layers (가장 위쪽 & 가장 아래쪽)
+### Whisper Encoder + Llama 4 layers (가장 위쪽 & 가장 아래쪽)
 
 - train_data: trained with librispeech train.100
 - epoch: 1 
