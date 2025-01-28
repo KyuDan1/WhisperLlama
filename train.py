@@ -23,7 +23,7 @@ llama = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B")
 class LibriSpeechDataset(Dataset):
     def __init__(self, split="train.100", processor=None):
         print("lrbirispeech class load dataset...")
-        self.dataset = load_dataset("fixie-ai/librispeech_asr", data_dir="clean", split=split)
+        self.dataset = load_dataset("fixie-ai/librispeech_asr", "clean", split=split)
         self.processor = processor
     
     def __len__(self):
@@ -178,6 +178,7 @@ def evaluate(model, eval_loader, device):
     return avg_loss
 
 def main():
+    torch.cuda.empty_cache()
     # WandB 초기화
     wandb.init(project="whisper-llama-asr")
     
@@ -187,13 +188,13 @@ def main():
     
     # 데이터셋 및 데이터로더 준비
     print("main train dataset preparing...")
-    train_dataset = LibriSpeechDataset(split="train", processor=processor)
+    train_dataset = LibriSpeechDataset(split="train.100", processor=processor)
     print("main eval dataset preparing...")
     eval_dataset = LibriSpeechDataset(split="validation", processor=processor)
     
     train_loader = DataLoader(
         train_dataset,
-        batch_size=8,
+        batch_size=2,
         shuffle=True,
         collate_fn=collate_fn,
         num_workers=4
@@ -201,11 +202,13 @@ def main():
     
     eval_loader = DataLoader(
         eval_dataset,
-        batch_size=8,
+        batch_size=2,
         shuffle=False,
         collate_fn=collate_fn,
         num_workers=4
     )
+    
+
 
     modified_llama = modify_llama_blocks(llama, num_blocks_to_keep=2)
     whisper_encoder = whisper.model.encoder
