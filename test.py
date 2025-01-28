@@ -5,6 +5,10 @@ from model import create_asr_model, modify_llama_blocks, decode_asr_output
 import gc
 import librosa
 import numpy as np
+import os
+from datasets import load_dataset
+
+
 def load_trained_model(model_path):
     gc.collect()
     torch.cuda.empty_cache()
@@ -177,23 +181,40 @@ def run_inference(model, input_features, tokenizer, max_length=200):
 
 def main():
     try:
-        model_path = "../models/best_model_epoch_0.pt"
-        audio_path = "test.wav"
+        model_path = "/home/elicer/.cache/huggingface/hub/models--Kyudan--whisperllama/snapshots/3269c93814c84e38f2d1a46935851f4923d73659/best_model_epoch_0.pt"
+        
+        # LibriSpeech 테스트 셋 로드 (10개 샘플)
+        print("Loading LibriSpeech test samples...")
+        dataset = load_dataset("librispeech_asr", "clean", split="test", streaming=True)
+        samples = list(dataset.take(10))  # 10개 샘플만 가져오기
         
         print("Loading model...")
         model, processor, tokenizer = load_trained_model(model_path)
         
-        print("Processing audio...")
-        input_features = process_audio(audio_path, processor)
-        
-        print("Running inference...")
-        text = run_inference(model, input_features, tokenizer)
-        
-        print("\nTranscription:")
-        print("-" * 50)
-        print(text)
-        print("-" * 50)
-        
+        # 각 샘플에 대해 추론 실행
+        for idx, sample in enumerate(samples, 1):
+            print(f"\nProcessing sample {idx}/10...")
+            print(f"Speaker ID: {sample['speaker_id']}")
+            print(f"Chapter ID: {sample['chapter_id']}")
+            print(f"Reference text: {sample['text']}")
+            
+            # 오디오 처리
+            input_features = processor(
+                sample['audio']['array'],
+                sampling_rate=16000,
+                return_tensors="pt"
+            ).input_features.half()
+            
+            # 추론 실행
+            print("Running inference...")
+            transcribed_text = run_inference(model, input_features, tokenizer)
+            
+            print("\nTranscription Results:")
+            print("-" * 50)
+            print(f"Model output: {transcribed_text}")
+            print(f"Reference  : {sample['text']}")
+            print("-" * 50)
+            
     except Exception as e:
         print(f"Error in main: {e}")
     finally:
