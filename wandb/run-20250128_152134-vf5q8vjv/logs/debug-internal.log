@@ -1,0 +1,15 @@
+{"time":"2025-01-28T15:21:34.411936934+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250128_152134-vf5q8vjv/logs/debug-core.log"}
+{"time":"2025-01-28T15:21:34.674416423+09:00","level":"INFO","msg":"created new stream","id":"vf5q8vjv"}
+{"time":"2025-01-28T15:21:34.674444526+09:00","level":"INFO","msg":"stream: started","id":"vf5q8vjv"}
+{"time":"2025-01-28T15:21:34.674509701+09:00","level":"INFO","msg":"handler: started","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:21:34.674767833+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:21:34.67477974+09:00","level":"INFO","msg":"sender: started","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:21:35.002180627+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-28T15:31:33.624149116+09:00","level":"INFO","msg":"stream: closing","id":"vf5q8vjv"}
+{"time":"2025-01-28T15:31:33.624998783+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-28T15:31:33.630050737+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-28T15:31:34.367468727+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-28T15:31:34.765586105+09:00","level":"INFO","msg":"handler: closed","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:31:34.76561698+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:31:34.765635385+09:00","level":"INFO","msg":"sender: closed","stream_id":"vf5q8vjv"}
+{"time":"2025-01-28T15:31:34.765741436+09:00","level":"INFO","msg":"stream: closed","id":"vf5q8vjv"}

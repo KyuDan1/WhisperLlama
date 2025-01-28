@@ -1,0 +1,15 @@
+{"time":"2025-01-28T15:33:35.128219097+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250128_153334-98xsjlji/logs/debug-core.log"}
+{"time":"2025-01-28T15:33:35.393177377+09:00","level":"INFO","msg":"created new stream","id":"98xsjlji"}
+{"time":"2025-01-28T15:33:35.393219923+09:00","level":"INFO","msg":"stream: started","id":"98xsjlji"}
+{"time":"2025-01-28T15:33:35.393278268+09:00","level":"INFO","msg":"handler: started","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:33:35.393530552+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:33:35.393836858+09:00","level":"INFO","msg":"sender: started","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:33:35.827489577+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-28T15:34:46.144073369+09:00","level":"INFO","msg":"stream: closing","id":"98xsjlji"}
+{"time":"2025-01-28T15:34:46.145093236+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-28T15:34:46.150586406+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-28T15:34:46.929661179+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-28T15:34:47.217292008+09:00","level":"INFO","msg":"handler: closed","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:34:47.21733105+09:00","level":"INFO","msg":"sender: closed","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:34:47.217305091+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"98xsjlji"}
+{"time":"2025-01-28T15:34:47.218030991+09:00","level":"INFO","msg":"stream: closed","id":"98xsjlji"}

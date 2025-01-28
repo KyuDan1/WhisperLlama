@@ -1,0 +1,25 @@
+Downloading readme: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.72k/1.72k [00:00<00:00, 2.59MB/s]
+Resolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 223.90it/s]
+Resolving data files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 200924.74it/s]
+Traceback (most recent call last):
+  File "/home/kyudan/WhisperLlama/train.py", line 245, in <module>
+    main()
+  File "/home/kyudan/WhisperLlama/train.py", line 188, in main
+    train_dataset = LibriSpeechDataset(split="train.100", processor=processor)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 25, in __init__
+    self.dataset = load_dataset("fixie-ai/librispeech_asr", subset="clean", split=split)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/load.py", line 2556, in load_dataset
+    builder_instance = load_dataset_builder(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/load.py", line 2265, in load_dataset_builder
+    builder_instance: DatasetBuilder = builder_cls(
+                                       ^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/builder.py", line 371, in __init__
+    self.config, self.config_id = self._create_builder_config(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/datasets/builder.py", line 605, in _create_builder_config
+    builder_config = self.BUILDER_CONFIG_CLASS(**config_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ParquetConfig.__init__() got an unexpected keyword argument 'subset'

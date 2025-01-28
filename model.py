@@ -242,7 +242,7 @@ def decode_asr_output(outputs, tokenizer, skip_special_tokens=True):
     
     return decoded_text
 
-modified_llama = modify_llama_blocks(llama, num_blocks_to_keep=2)
+"""modified_llama = modify_llama_blocks(llama, num_blocks_to_keep=2)
 tokenizer.padding_side = "left"  # 왼쪽에 패딩 추가
 
 # 모델 사용 전 패딩 토큰 설정
@@ -266,3 +266,4 @@ tokenizer.pad_token = tokenizer.eos_token
 # 직접 디코딩
 text = decode_asr_output(outputs, tokenizer)
 print("디코딩된 텍스트:", text)
+"""

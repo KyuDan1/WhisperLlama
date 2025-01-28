@@ -22,7 +22,8 @@ llama = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B")
 
 class LibriSpeechDataset(Dataset):
     def __init__(self, split="train.100", processor=None):
-        self.dataset = load_dataset("fixie-ai/librispeech_asr", subset="clean", split=split)
+        print("lrbirispeech class load dataset...")
+        self.dataset = load_dataset("fixie-ai/librispeech_asr", data_dir="clean", split=split)
         self.processor = processor
     
     def __len__(self):
@@ -185,7 +186,9 @@ def main():
     processor.tokenizer.pad_token = processor.tokenizer.eos_token
     
     # 데이터셋 및 데이터로더 준비
-    train_dataset = LibriSpeechDataset(split="train.100", processor=processor)
+    print("main train dataset preparing...")
+    train_dataset = LibriSpeechDataset(split="train", processor=processor)
+    print("main eval dataset preparing...")
     eval_dataset = LibriSpeechDataset(split="validation", processor=processor)
     
     train_loader = DataLoader(
