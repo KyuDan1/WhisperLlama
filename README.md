@@ -2,9 +2,11 @@
 
 ### Whisper Encodoer + Llama 4 layers (가장 위쪽 & 가장 아래쪽)
 
-- trained with librispeech train.100
-- 1 epoch
-- 2e-5 lr
+- train_data: trained with librispeech train.100
+- epoch: 1 
+- lr: 2e-5
+- trained model: https://huggingface.co/Kyudan/whisperllama
+- result: 학습이 완전하지 않음 (같은 말 반복)
 
 ### Loss
 <img src="W&B Chart 2025. 1. 29. 오전 12_30_50.png"  title="loss"/>
