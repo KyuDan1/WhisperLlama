@@ -81,72 +81,122 @@ class WhisperLlamaASR(nn.Module):
         self.encoder = whisper_encoder
         self.decoder = llama_decoder
         
-        self.encoder_dim = 1280
-        self.decoder_dim = 2048
+        self.encoder_dim = 1280  # Whisper encoder dimension
+        self.decoder_dim = 2048  # Llama hidden dimension
+        self.vocab_size = llama_decoder.config.vocab_size
         
+        # Bridge network to convert encoder features to decoder dimension
         self.bridge = nn.Sequential(
             nn.Linear(self.encoder_dim, self.decoder_dim),
-            nn.LayerNorm(self.decoder_dim),
-            nn.ReLU(),
-            nn.Dropout(0.1)
+            nn.GELU(),
+            nn.Linear(self.decoder_dim, self.decoder_dim)
         )
         
-        # 모든 컴포넌트를 같은 디바이스로 이동
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.to(device)
-        
-    def forward(self, input_features, decoder_input_ids, decoder_attention_mask=None):
-        # 입력을 모델과 같은 디바이스로 이동
-        device = next(self.parameters()).device
-        input_features = input_features.to(device)
-        decoder_input_ids = decoder_input_ids.to(device)
-        if decoder_attention_mask is not None:
-            decoder_attention_mask = decoder_attention_mask.to(device)
-            
-        # Whisper encoder를 통과
-        encoder_outputs = self.encoder(
-            input_features=input_features,
-            return_dict=True
+        # Cross-attention layers
+        self.cross_attention = nn.MultiheadAttention(
+            embed_dim=self.decoder_dim,
+            num_heads=8,
+            dropout=0.1,
+            batch_first=True
         )
         
+        # Output projection
+        self.output_projection = nn.Linear(self.decoder_dim, self.vocab_size)
+        
+    def forward(self, input_features, labels=None):
+        # Encode audio features
+        with torch.no_grad():  # Whisper encoder is frozen
+            encoder_outputs = self.encoder(
+                input_features=input_features,
+                return_dict=True
+            )
         encoder_hidden_states = encoder_outputs.last_hidden_state
-        bridge_hidden_states = self.bridge(encoder_hidden_states)
         
-        # Llama decoder에 전달
-        decoder_outputs = self.decoder(
-            input_ids=decoder_input_ids,
-            attention_mask=decoder_attention_mask,
-            # encoder_hidden_states=bridge_hidden_states,  # cross-attention이 없으므로 제거
-            use_cache=False,
-            return_dict=True
-        )
+        # Transform encoder outputs to decoder dimension
+        bridged_features = self.bridge(encoder_hidden_states)
         
-        return decoder_outputs
+        batch_size = input_features.size(0)
+        max_length = min(128, labels.size(1) if labels is not None else 128)
+        device = input_features.device
+        
+        # Initialize sequence with BOS token
+        current_ids = torch.full((batch_size, 1), self.decoder.config.bos_token_id, device=device)
+        
+        total_loss = 0
+        
+        # Autoregressive generation with memory efficient implementation
+        for i in range(max_length - 1):
+            # Get decoder hidden states for current sequence
+            decoder_outputs = self.decoder(
+                input_ids=current_ids,
+                output_hidden_states=True,
+                use_cache=False,
+                return_dict=True
+            )
+            decoder_hidden_states = decoder_outputs.hidden_states[-1]
+            
+            # Apply cross-attention only to the last token's hidden state
+            last_hidden = decoder_hidden_states[:, -1:, :]
+            cross_attn_output, _ = self.cross_attention(
+                query=last_hidden,
+                key=bridged_features,
+                value=bridged_features
+            )
+            
+            # Generate logits for the next token
+            combined_features = last_hidden + cross_attn_output
+            next_token_logits = self.output_projection(combined_features)
+            
+            if labels is not None:
+                # Calculate loss for this step
+                if i < labels.size(1) - 1:
+                    loss = F.cross_entropy(
+                        next_token_logits.view(-1, self.vocab_size),
+                        labels[:, i+1].view(-1),
+                        ignore_index=-100
+                    )
+                    total_loss += loss
+            
+            # Sample next token
+            if labels is not None:
+                # Teacher forcing
+                next_token = labels[:, i+1:i+2]
+            else:
+                # Greedy decoding
+                next_token = torch.argmax(next_token_logits, dim=-1)
+            
+            # Append next token to sequence
+            current_ids = torch.cat([current_ids, next_token], dim=1)
+            
+            # Free up memory
+            del decoder_outputs, decoder_hidden_states, cross_attn_output
+            torch.cuda.empty_cache()
+        
+        return type('OutputType', (), {
+            'loss': total_loss / (max_length - 1) if labels is not None else None,
+            'logits': None,  # We're not storing all logits anymore
+            'predictions': current_ids
+        })
 
 def create_asr_model(whisper_encoder, llama_decoder):
-    # GPU가 있으면 GPU로 이동
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    
+    # Freeze Whisper encoder
+    for param in whisper_encoder.parameters():
+        param.requires_grad = False
+    
+    # Move models to device
     whisper_encoder = whisper_encoder.to(device)
     llama_decoder = llama_decoder.to(device)
     
     model = WhisperLlamaASR(whisper_encoder, llama_decoder)
     return model.to(device)
 
-def process_batch(model, input_features, decoder_input_ids, decoder_attention_mask=None):
-    # 모델의 디바이스 확인
+def process_batch(model, input_features):
     device = next(model.parameters()).device
-    
-    # 입력 데이터를 모델과 같은 디바이스로 이동
     input_features = input_features.to(device)
-    decoder_input_ids = decoder_input_ids.to(device)
-    if decoder_attention_mask is not None:
-        decoder_attention_mask = decoder_attention_mask.to(device)
     
-    outputs = model(
-        input_features=input_features,
-        decoder_input_ids=decoder_input_ids,
-        decoder_attention_mask=decoder_attention_mask
-    )
+    outputs = model(input_features=input_features)
     return outputs
 
 
@@ -176,35 +226,26 @@ def decode_asr_output(outputs, tokenizer, skip_special_tokens=True):
     return decoded_text
 
 
-def generate_text(model, text, max_length=100):
-    """
-    주어진 텍스트에 대해 Llama 모델을 사용하여 텍스트를 생성합니다.
+def generate_text(model, input_features, max_length=100):
+
+    device = next(model.parameters()).device
+    input_features = input_features.to(device)
     
-    Args:
-        model: Llama 모델
-        text: 입력 텍스트
-        max_length: 생성할 최대 토큰 수
-    
-    Returns:
-        생성된 텍스트
-    """
-    # 입력 텍스트를 토큰화
-    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
-    print("input size: ", inputs)
-    # GPU가 있다면 GPU로 이동
-    if torch.cuda.is_available():
-        model = model.cuda()
-        inputs = {k: v.cuda() for k, v in inputs.items()}
-    
-    print(inputs)
-    # 모델을 평가 모드로 설정
     model.eval()
     
-    # 텍스트 생성
     with torch.no_grad():
-        output_sequences = model.generate(
-            input_ids=inputs["input_ids"],
-            attention_mask=inputs["attention_mask"],
+        # Whisper 인코더와 bridge를 통과
+        encoder_outputs = model.encoder(
+            input_features=input_features,
+            return_dict=True
+        )
+        encoder_hidden_states = encoder_outputs.last_hidden_state
+        token_logits = model.bridge(encoder_hidden_states)
+        initial_tokens = torch.argmax(token_logits, dim=-1)
+        
+        # Llama로 텍스트 생성
+        output_sequences = model.decoder.generate(
+            input_ids=initial_tokens,
             max_length=max_length,
             temperature=0.7,
             top_p=0.9,
@@ -214,26 +255,14 @@ def generate_text(model, text, max_length=100):
             num_return_sequences=1,
             pad_token_id=tokenizer.pad_token_id,
             eos_token_id=tokenizer.eos_token_id,
-            bos_token_id=tokenizer.bos_token_id,  # 시작 토큰 ID 추가
+            bos_token_id=tokenizer.bos_token_id,
         )
     
-    # 생성된 텍스트 디코딩
-    generated_text = tokenizer.decode(output_sequences[0], skip_special_tokens=True)
-    
-    return generated_text
+    return output_sequences
+
 
 def decode_asr_output(outputs, tokenizer, skip_special_tokens=True):
-    """
-    ASR 모델의 출력을 텍스트로 변환합니다.
-    
-    Args:
-        outputs: 모델의 출력 (CausalLMOutputWithPast)
-        tokenizer: Llama 토크나이저
-        skip_special_tokens: 특수 토큰 스킵 여부
-    
-    Returns:
-        str: 디코딩된 텍스트
-    """
+
     # logits에서 가장 높은 확률을 가진 토큰 인덱스 선택
     predictions = torch.argmax(outputs.logits, dim=-1)
     
@@ -241,29 +270,3 @@ def decode_asr_output(outputs, tokenizer, skip_special_tokens=True):
     decoded_text = tokenizer.decode(predictions[0], skip_special_tokens=skip_special_tokens)
     
     return decoded_text
-
-"""modified_llama = modify_llama_blocks(llama, num_blocks_to_keep=2)
-tokenizer.padding_side = "left"  # 왼쪽에 패딩 추가
-
-# 모델 사용 전 패딩 토큰 설정
-modified_llama.config.pad_token_id = tokenizer.pad_token_id
-modified_llama.resize_token_embeddings(len(tokenizer))
-
-
-whisper_encoder = whisper.model.encoder
-asr_model = create_asr_model(whisper_encoder, modified_llama)
-
-# 예시 입력 데이터 생성 (CPU에서 생성)
-input_features = torch.randn(1, 80, 3000)
-decoder_input_ids = torch.randint(0, 32000, (1, 100))
-
-# 모델 실행 (process_batch 내에서 GPU로 이동)
-outputs = process_batch(asr_model, input_features, decoder_input_ids)
-
-
-tokenizer.pad_token = tokenizer.eos_token
-
-# 직접 디코딩
-text = decode_asr_output(outputs, tokenizer)
-print("디코딩된 텍스트:", text)
-"""

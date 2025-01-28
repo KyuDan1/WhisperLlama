@@ -1,0 +1,15 @@
+{"time":"2025-01-29T01:41:49.974833033+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250129_014149-gg2g5m40/logs/debug-core.log"}
+{"time":"2025-01-29T01:41:50.240263184+09:00","level":"INFO","msg":"created new stream","id":"gg2g5m40"}
+{"time":"2025-01-29T01:41:50.240288583+09:00","level":"INFO","msg":"stream: started","id":"gg2g5m40"}
+{"time":"2025-01-29T01:41:50.240345962+09:00","level":"INFO","msg":"handler: started","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:41:50.24059307+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:41:50.240956944+09:00","level":"INFO","msg":"sender: started","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:41:54.787059844+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-29T01:57:57.280817195+09:00","level":"INFO","msg":"stream: closing","id":"gg2g5m40"}
+{"time":"2025-01-29T01:57:57.280880515+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-29T01:57:57.282226563+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-29T01:57:58.111841983+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-29T01:57:58.458202969+09:00","level":"INFO","msg":"handler: closed","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:57:58.45822573+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:57:58.467922353+09:00","level":"INFO","msg":"sender: closed","stream_id":"gg2g5m40"}
+{"time":"2025-01-29T01:57:58.467985548+09:00","level":"INFO","msg":"stream: closed","id":"gg2g5m40"}

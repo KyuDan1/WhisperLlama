@@ -1,0 +1,133 @@
+main train dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 130.52it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 134396.92it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 580430.87it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 110134.90it/s]
+Loading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 23/23 [00:00<00:00, 161.40it/s]
+main eval dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 652447.29it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 298704.14it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 504758.65it/s]
+Resolving data files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 14300.79it/s]
+Epoch 0:   3%|███                                                                                                     | 15/500 [04:22<2:39:29, 19.73s/it, loss=9.45]
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+logits shape: torch.Size([2, 1, 128256])
+labels shape: torch.Size([2, 256])
+Traceback (most recent call last):
+  File "/home/kyudan/WhisperLlama/train.py", line 248, in <module>
+    main()
+  File "/home/kyudan/WhisperLlama/train.py", line 228, in main
+    train_loss = train_epoch(model, train_loader, optimizer, device, epoch)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 113, in train_epoch
+    optimizer.step()
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/optim/optimizer.py", line 385, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/optim/optimizer.py", line 76, in _use_grad
+    ret = func(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/optim/adamw.py", line 187, in step
+    adamw(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/optim/adamw.py", line 339, in adamw
+    func(
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/optim/adamw.py", line 546, in _multi_tensor_adamw
+    torch._foreach_mul_(device_params, 1 - lr * weight_decay)
+KeyboardInterrupt

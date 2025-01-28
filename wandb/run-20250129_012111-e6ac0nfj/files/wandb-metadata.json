@@ -1,0 +1,41 @@
+{
+  "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.12.2",
+  "startedAt": "2025-01-28T16:21:12.160385Z",
+  "program": "/home/kyudan/WhisperLlama/train.py",
+  "codePath": "train.py",
+  "git": {
+    "remote": "https://github.com/KyuDan1/WhisperLlama.git",
+    "commit": "44c93c65478c78dfc497caddf1782d2095f5bf3b"
+  },
+  "email": "wjdrbeks1021@naver.com",
+  "root": "/home/kyudan/WhisperLlama",
+  "host": "kyudan",
+  "executable": "/home/kyudan/anaconda3/envs/py3.12/bin/python",
+  "codePathLocal": "train.py",
+  "cpu_count": 14,
+  "cpu_count_logical": 28,
+  "gpu": "NVIDIA GeForce RTX 4070",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1081101176832",
+      "used": "291918307328"
+    }
+  },
+  "memory": {
+    "total": "15530106880"
+  },
+  "cpu": {
+    "count": 14,
+    "countLogical": 28
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4070",
+      "memoryTotal": "12878610432",
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.6"
+}

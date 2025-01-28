@@ -1,0 +1,27 @@
+main train dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 284.49it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 198156.09it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 618107.96it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 175677.65it/s]
+Loading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 23/23 [00:00<00:00, 136.39it/s]
+main eval dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 635959.45it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 224694.86it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 612733.11it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 222214.78it/s]
+Epoch 0:   0%|                                                                                                                              | 0/500 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/kyudan/WhisperLlama/train.py", line 214, in <module>
+    main()
+  File "/home/kyudan/WhisperLlama/train.py", line 194, in main
+    train_loss = train_epoch(model, train_loader, optimizer, device, epoch)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 100, in train_epoch
+    loss = F.cross_entropy(
+           ^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/nn/functional.py", line 3059, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected input batch_size (3000) to match target batch_size (256).

@@ -1,0 +1,15 @@
+{"time":"2025-01-29T01:13:22.58590588+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250129_011322-7k9s53zt/logs/debug-core.log"}
+{"time":"2025-01-29T01:13:22.852073984+09:00","level":"INFO","msg":"created new stream","id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:22.852106012+09:00","level":"INFO","msg":"stream: started","id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:22.85218762+09:00","level":"INFO","msg":"handler: started","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:22.852341815+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:22.852738238+09:00","level":"INFO","msg":"sender: started","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:23.333168775+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-29T01:13:42.300899843+09:00","level":"INFO","msg":"stream: closing","id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:42.301373211+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-29T01:13:42.30573801+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-29T01:13:43.125265688+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-29T01:13:43.379830153+09:00","level":"INFO","msg":"handler: closed","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:43.379849058+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:43.380415854+09:00","level":"INFO","msg":"sender: closed","stream_id":"7k9s53zt"}
+{"time":"2025-01-29T01:13:43.380445973+09:00","level":"INFO","msg":"stream: closed","id":"7k9s53zt"}

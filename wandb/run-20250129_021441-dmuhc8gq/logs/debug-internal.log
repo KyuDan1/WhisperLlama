@@ -1,0 +1,7 @@
+{"time":"2025-01-29T02:14:41.807624542+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/kyudan/WhisperLlama/wandb/run-20250129_021441-dmuhc8gq/logs/debug-core.log"}
+{"time":"2025-01-29T02:14:42.070287316+09:00","level":"INFO","msg":"created new stream","id":"dmuhc8gq"}
+{"time":"2025-01-29T02:14:42.070309749+09:00","level":"INFO","msg":"stream: started","id":"dmuhc8gq"}
+{"time":"2025-01-29T02:14:42.070697131+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"dmuhc8gq"}
+{"time":"2025-01-29T02:14:42.070707168+09:00","level":"INFO","msg":"handler: started","stream_id":"dmuhc8gq"}
+{"time":"2025-01-29T02:14:42.070728712+09:00","level":"INFO","msg":"sender: started","stream_id":"dmuhc8gq"}
+{"time":"2025-01-29T02:14:46.849288161+09:00","level":"INFO","msg":"Starting system monitor"}

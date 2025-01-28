@@ -1,0 +1,57 @@
+main train dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:01<00:00, 67.41it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 267721.53it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 532207.76it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 325771.18it/s]
+Loading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 23/23 [00:00<00:00, 206.98it/s]
+main eval dataset preparing...
+librispeech class load dataset...
+Resolving data files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 419.00it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 188508.04it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 84/84 [00:00<00:00, 515089.96it/s]
+Resolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 24/24 [00:00<00:00, 218833.25it/s]
+Epoch 0:   0%|                                                                                                                              | 0/500 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/kyudan/WhisperLlama/train.py", line 238, in <module>
+    main()
+  File "/home/kyudan/WhisperLlama/train.py", line 218, in main
+    train_loss = train_epoch(model, train_loader, optimizer, device, epoch)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 91, in train_epoch
+    for batch in progress_bar:
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1346, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1372, in _process_data
+    data.reraise()
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/_utils.py", line 722, in reraise
+    raise exception
+ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/kyudan/WhisperLlama/train.py", line 47, in __getitem__
+    labels = self.llama_tokenizer(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2868, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2978, in _call_one
+    return self.encode_plus(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3045, in encode_plus
+    padding_strategy, truncation_strategy, max_length, kwargs = self._get_padding_truncation_strategies(
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyudan/anaconda3/envs/py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2770, in _get_padding_truncation_strategies
+    raise ValueError(
+ValueError: Asking to pad but the tokenizer does not have a padding token. Please select a token to use as `pad_token` `(tokenizer.pad_token = tokenizer.eos_token e.g.)` or add a new pad token via `tokenizer.add_special_tokens({'pad_token': '[PAD]'})`.
