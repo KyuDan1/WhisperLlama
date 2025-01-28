@@ -6,6 +6,7 @@
 - epoch: 1 
 - lr: 2e-5
 - trained model: https://huggingface.co/Kyudan/whisperllama
+- training: elice.io 클라우드 A100 1개개 사용 (약 5천원)
 - result: 학습이 완전하지 않음 (같은 말 반복)
 
 ### Loss
