@@ -23,7 +23,7 @@ llama = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B")
 class LibriSpeechDataset(Dataset):
     def __init__(self, split="train.100", processor=None):
         print("lrbirispeech class load dataset...")
-        self.dataset = load_dataset("fixie-ai/librispeech_asr", "clean", split=split)
+        self.dataset = load_dataset("fixie-ai/librispeech_asr", "clean", split=split, streaming=True)
         self.processor = processor
     
     def __len__(self):
